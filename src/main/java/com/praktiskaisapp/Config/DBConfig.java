@@ -40,7 +40,7 @@ public class DBConfig {
     final Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto", "create"));
-        hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect", "org.hibernate.dialect.SQLiteDialect"));
+        hibernateProperties.setProperty("hibernate.dialect","org.hibernate.dialect.SQLiteDialect");
         hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql", "true"));
         return hibernateProperties;
     }

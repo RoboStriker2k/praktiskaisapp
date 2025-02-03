@@ -1,4 +1,6 @@
 30/01/25 12:30 - 14:16 - sakotneja projekta uzstadišana iepazīšanās ar springboot un sqlite ka ari angular app izstrades vides izveide.
-02/02/2025 16:10 - 17:30 - pirmo reizi tieku pie succesfull springboot palaišanas
+02/02/2025 16:10 - 17:30 - pirmo reizi tieku pie succesfull springboot palaišanas, pēc projekta mapes izstrades checkpoint 1
            17:30-18:00  - definejumu izmaiņas
-03/02/2025 10:00- x - endpoint definešana
+03/02/2025 10:00- 12:40 - Statiskas angular lietotnes pasniegšana -checkpoint 4  
+           15:00 - 17:00         rest endpoint izstrade (puse no endpoint)
+           20:00-21:30         visparejs angular izkartojums
