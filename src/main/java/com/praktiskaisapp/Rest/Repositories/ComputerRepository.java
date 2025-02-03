@@ -8,6 +8,5 @@ import com.praktiskaisapp.Rest.Entity.computer;
 @Repository
 public interface ComputerRepository extends CrudRepository<computer, Long> {         
      
-    public computer getComputer();
      
 }
