@@ -26,11 +26,13 @@ public class records {
     private List<computer> requestedevices ;
     @Column(name = "status", columnDefinition = "VARCHAR(255) DEFAULT 'Pending'")
     private String status ;
+    private String reason;
   
-    public records(Long id, Date requestdate, List<computer> requestedevices, String status) {
+    public records(Long id, Date requestdate, List<computer> requestedevices,String reason, String status) {
         this.id = id;
         this.requestdate = requestdate;
         this.requestedevices = requestedevices;
+        this.reason = reason;
         this.status = status;
     }
     
@@ -73,7 +75,14 @@ public class records {
         for (computer device : this.requestedevices) {
             devices += device.computerToString() + ",";
         }
-        return "Record{" + this.id + "," + this.requestdate + "," + devices + "," + this.status + "}";
+        return "Record{" + this.id + "," + this.requestdate + "," + devices + "," + this.reason + "," +this.status + "}";
     }
+    public String getReason() {
+        return reason;
+    }
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
 
 }

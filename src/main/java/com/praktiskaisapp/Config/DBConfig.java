@@ -22,9 +22,9 @@ public class DBConfig {
     public DataSource dataSource() {
         final DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(env.getProperty("DBdriverClassName", "org.sqlite.JDBC"));
-        dataSource.setUrl(env.getProperty("dbdatasourceurl", "jdbc:sqlite:memory:myDb?cache=shared"));
-        dataSource.setUsername(env.getProperty("DBusername", "sa"));
-        dataSource.setPassword(env.getProperty("DBpassword", "sa"));
+        dataSource.setUrl(env.getProperty("datasourceurl", "jdbc:sqlite:memory:myDb?cache=shared"));
+        dataSource.setUsername(env.getProperty("username", "robo"));
+        dataSource.setPassword(env.getProperty("password", "1234"));
         return dataSource;
     }
     @Bean
