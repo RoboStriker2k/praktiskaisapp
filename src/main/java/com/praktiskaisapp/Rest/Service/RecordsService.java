@@ -28,8 +28,8 @@ public class RecordsService {
     }
     
     @Transactional
-    public void save(records records) {
-        recordsRepository.save(records);
+    public records save(records records) {
+        return recordsRepository.save(records);
     }
     @Transactional
     public Iterable<records> findAll() {
