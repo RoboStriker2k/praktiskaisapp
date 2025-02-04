@@ -1,12 +1,12 @@
-package com.praktiskaisapp.Rest.Service;
+package com.praktiskaisapp.praktiskaisapp.Rest.Service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.praktiskaisapp.Rest.Entity.computer;
-import com.praktiskaisapp.Rest.Repositories.ComputerRepository;
+import com.praktiskaisapp.praktiskaisapp.Rest.Entity.computer;
+import com.praktiskaisapp.praktiskaisapp.Rest.Repositories.ComputerRepository;
 
 import jakarta.transaction.Transactional;
 @Service
@@ -30,8 +30,8 @@ public class ComputerService {
     }
 
     @Transactional
-    public boolean existsByRamAmmount(Integer RamAmmount) {
-        return computerRepository.existsByRamAmmount(RamAmmount);
+    public boolean existsByRamammount(Integer ramammount) {
+        return computerRepository.existsByRamammount(ramammount);
     }
 
     @Transactional
@@ -45,8 +45,8 @@ public class ComputerService {
     }
 
     @Transactional
-    public boolean existsByStorage_ammount(Integer Storage_ammount) {
-        return computerRepository.existsByStorage_ammount(Storage_ammount);
+    public boolean existsByStorageammount(Integer Storageammount) {
+        return computerRepository.existsByStorageammount(Storageammount);
     }
 
     @Transactional
@@ -55,8 +55,8 @@ public class ComputerService {
     }
 
     @Transactional
-    public boolean existsByOperating_system(String Operating_system) {
-        return computerRepository.existsByOperating_system(Operating_system);
+    public boolean existsByOperatingsystem(String Operatingsystem) {
+        return computerRepository.existsByOperatingsystem(Operatingsystem);
     }
 
     @Transactional
@@ -70,8 +70,8 @@ public class ComputerService {
     }
 
     @Transactional
-    public List<computer> findByRamAmmount(Integer RamAmmount) {
-        return computerRepository.findByRamAmmount(RamAmmount);
+    public List<computer> findByRamAmmount(Integer ramammount) {
+        return computerRepository.findByRamammount(ramammount);
     }
 
     @Transactional
@@ -86,13 +86,13 @@ public class ComputerService {
 
     @Transactional
 
-    public List<computer> findByStorage_ammount(Integer Storage_ammount) {
-        return computerRepository.findByStorage_ammount(Storage_ammount);
+    public List<computer> findByStorageammount(Integer Storageammount) {
+        return computerRepository.findByStorageammount(Storageammount);
     }
 
     @Transactional
-    public List<computer> findByOperating_system(String Operating_system) {
-        return computerRepository.findByOperating_system(Operating_system);
+    public List<computer> findByOperatingsystem(String Operatingsystem) {
+        return computerRepository.findByOperatingsystem(Operatingsystem);
     }
 
     @Transactional
@@ -115,12 +115,24 @@ public class ComputerService {
         computerRepository.delete(computer);
     }
     @Transactional
-    public String updateComputer (long id, computer computer) {
-      try {
-        
-        return "Computer successfully edited";
-      } catch (Exception e) {
-        return "Error: " + e.getMessage();
-      }
+    public String updateComputer(long id, computer updatedComputer) {
+        try {
+            computer existingComputer = computerRepository.findById(id);
+            if (existingComputer != null) {
+                existingComputer.setCpu(updatedComputer.getCpu());
+                existingComputer.setRamAmmount(updatedComputer.getRamAmmount());
+                existingComputer.setGpu(updatedComputer.getGpu());
+                existingComputer.setMotherboard(updatedComputer.getMotherboard());
+                existingComputer.setStorageammount(updatedComputer.getStorageammount());
+                existingComputer.setComments(updatedComputer.getComments());
+                existingComputer.setOperatingsystem(updatedComputer.getOperatingsystem());
+                computerRepository.save(existingComputer);
+                return "Computer successfully edited";
+            } else {
+                return "Computer not found";
+            }
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
     }
     }

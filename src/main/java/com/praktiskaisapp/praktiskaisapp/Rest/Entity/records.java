@@ -1,4 +1,5 @@
-package com.praktiskaisapp.Rest.Entity;
+package com.praktiskaisapp.praktiskaisapp.Rest.Entity;
+
 import java.util.Date;
 
 import jakarta.persistence.Column;
@@ -8,34 +9,36 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 import java.util.List;
 
-
-
-
-@Entity 
+@Entity
+@Table(name = "records")
 public class records {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-@Column(name = "requestdate", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
-    private  Date requestdate;
-@OneToMany 
-@JoinColumn(name = "computer_id")
-    private List<computer> requestedevices ;
+    @Column(name = "requestdate", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
+    private Date requestdate;
+    @OneToMany
+    @JoinColumn(name = "computer_id")
+    private List<computer> requestedevices;
     @Column(name = "status", columnDefinition = "VARCHAR(255) DEFAULT 'Pending'")
-    private String status ;
+    private String status;
     private String reason;
-  
-    public records(Long id, Date requestdate, List<computer> requestedevices,String reason, String status) {
+
+    public records() {
+    }
+
+    public records(Long id, Date requestdate, List<computer> requestedevices, String reason, String status) {
         this.id = id;
         this.requestdate = requestdate;
         this.requestedevices = requestedevices;
         this.reason = reason;
         this.status = status;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -52,37 +55,48 @@ public class records {
         this.requestdate = requestdate;
     }
 
-    public  List<computer> getRequestedevices() {  
+    public List<computer> getRequestedevices() {
         return requestedevices;
     }
 
     public void setRequestedevices(List<computer> requestedevices) {
         this.requestedevices = requestedevices;
     }
+
     public String getStatus() {
         return status;
-    }   
+    }
+
     public void setStatus(String status) {
         this.status = status;
     }
+
     public records getRecord() {
         return this;
     }
+    public void setRecord (records record) {
+        this.id = record.getId();
+        this.requestdate = record.getRequestdate();
+        this.requestedevices = record.getRequestedevices();
+        this.reason = record.getReason();
+        this.status = record.getStatus();
+    }
 
-    public String recordToString()
-    {
+    public String recordToString() {
         String devices = "";
         for (computer device : this.requestedevices) {
             devices += device.computerToString() + ",";
         }
-        return "Record{" + this.id + "," + this.requestdate + "," + devices + "," + this.reason + "," +this.status + "}";
+        return "Record{" + this.id + "," + this.requestdate + "," + devices + "," + this.reason + "," + this.status
+                + "}";
     }
+
     public String getReason() {
         return reason;
     }
+
     public void setReason(String reason) {
         this.reason = reason;
     }
-
 
 }

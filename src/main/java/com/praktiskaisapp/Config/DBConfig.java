@@ -31,7 +31,7 @@ public class DBConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.praktiskaisapp.Rest.Entity");
+        em.setPackagesToScan("com.praktiskaisapp.Rest.Entity","com.praktiskaisapp.Rest.Service","com.praktiskaisapp.Rest.Repositories");
         em.setJpaVendorAdapter (new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;
@@ -46,3 +46,5 @@ public class DBConfig {
     }
 }
 
+
+    

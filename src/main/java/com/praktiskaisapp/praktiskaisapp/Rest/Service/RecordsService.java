@@ -1,11 +1,11 @@
-package com.praktiskaisapp.Rest.Service;
+package com.praktiskaisapp.praktiskaisapp.Rest.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.praktiskaisapp.Rest.Entity.records;
-import com.praktiskaisapp.Rest.Repositories.RecordsRepository;
+import com.praktiskaisapp.praktiskaisapp.Rest.Entity.records;
+import com.praktiskaisapp.praktiskaisapp.Rest.Repositories.RecordsRepository;
 
 @Service
 public class RecordsService {
@@ -36,10 +36,19 @@ public class RecordsService {
         return recordsRepository.findAll();
     }
     @Transactional
-    public String updateRecords (long id, records records) {
+    public String updateRecords (long id, records newRecord) {
       try {
-        recordsRepository.updateRecords(id,records);
-        return "Records successfully edited";
+        records existingRecord = recordsRepository.findById(id);
+        if (existingRecord != null) {
+            existingRecord.setRequestdate(newRecord.getRequestdate());
+            existingRecord.setRequestedevices(newRecord.getRequestedevices());
+            existingRecord.setReason(newRecord.getReason());
+            existingRecord.setStatus(newRecord.getStatus());
+            recordsRepository.save(existingRecord);
+            return "Records successfully edited";
+        } else {
+            return "Record not found";
+        }
       } catch (Exception e) {
         return "Error: " + e.getMessage();
       }
