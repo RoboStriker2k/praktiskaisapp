@@ -3,6 +3,7 @@ import { computers } from '../types/types';
 
 @Component({
   selector: 'addnewrecord',
+  standalone : true,
   template: `
     <div class="addnewrecord">
       <h2>Add New Record</h2>

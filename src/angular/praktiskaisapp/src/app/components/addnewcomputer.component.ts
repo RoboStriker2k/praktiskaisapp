@@ -3,9 +3,10 @@ import { computers } from '../types/types';
 
 @Component({
   selector: 'addnewcomputer',
+	standalone : true,
   template: `
     <div class="addnewcomputer">
-      <form group="addnewcomputer">
+      <form group="addnewcomputer" >
         <label for="cpu">CPU:</label>
         <input type="text" id="cpu" name="cpu" required />
 
@@ -37,7 +38,7 @@ import { computers } from '../types/types';
           required
         />
 
-        <button type="submit" (click)="submitfunction()">Submit</button>
+        <button preventDefault type="submit" (click)="submitfunction()">Submit</button>
       </form>
     </div>
   `,
@@ -63,7 +64,9 @@ export class AddNewComputerComponent {
 			comments: (<HTMLInputElement>document.getElementById('comments')).value,
 			operatingsystem: (<HTMLInputElement>document.getElementById('operatingsystem')).value,
 		};
+		console.log(computer);
+		
 		sendable.append('computer', JSON.stringify(computer));
-		fetch('/computer/newcomputer', { method: 'POST', body: sendable });
+		fetch('/computer/newcomputer', { method: 'POST', body: sendable, headers: { 'Content-Type': 'application/json' } });
   }
 }

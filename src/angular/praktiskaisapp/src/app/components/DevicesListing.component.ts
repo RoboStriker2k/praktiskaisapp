@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { computers } from '../types/types';
 @Component({
   selector: 'deviceslisting',
+  standalone : true,
   template: `
     <div class="deviceslisting">
       @if (devices.length === 0) {

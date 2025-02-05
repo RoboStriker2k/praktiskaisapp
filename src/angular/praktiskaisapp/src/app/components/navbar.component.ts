@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component,  EventEmitter, Output, signal } from '@angular/core';
 import { buttonstates } from '../types/types';
 
 @Component({
@@ -45,18 +45,26 @@ import { buttonstates } from '../types/types';
 })
 export class NavbarComponent {
   title = 'praktiskaisapp';
-  @Output() buttonstates: buttonstates = {
+ buttonstates: buttonstates = {
     addbutton: false,
     editbutton: false,
     deletebutton: false,
     listcomputers: false,
     addrecords: false,
   };
-  changestate(event: any) {
+  defaultbtnstates: buttonstates = {
+    addbutton: false,
+    editbutton: false,
+    deletebutton: false,
+    listcomputers: false,
+    addrecords: false,
+  };
 
+  buttons = signal<buttonstates>(this.buttonstates);
+@Output () BTNStates= new EventEmitter<buttonstates>();
+  changestate(event: any) {
     let buttname = event.target.name as keyof typeof this.buttonstates;
     if (
-      typeof buttname === 'string' &&
       [
         'addbutton',
         'editbutton',
@@ -65,26 +73,20 @@ export class NavbarComponent {
         'addrecords',
       ].includes(buttname)
     ) {
-      console.log('hi event.target.name : ', event.target.name, this.buttonstates);
-
-        
-      
-      (prev: buttonstates) => {
-        this.buttonstates = {
-          ...prev,
-          [buttname]: !prev[buttname] ,
-        };
-    
-      }
+      this.buttons.update((state) => ({
+        ...state,
+        ...this.defaultbtnstates,
+        [buttname]: !state[buttname],
+      }));
+      this.BTNStates.emit(this.buttons());
     } else {
-      console.log(' hi 2 event.target.name : ', event.target.name);
-      this.buttonstates = {
-        addbutton: false,
-        editbutton: false,
-        deletebutton: false,
-        listcomputers: false,
-        addrecords: false,
-      };
+      this.buttons.update((state: any) => ({
+        ...state,
+        ...this.defaultbtnstates,
+      }));
+    
+
     }
+ 
   }
 }

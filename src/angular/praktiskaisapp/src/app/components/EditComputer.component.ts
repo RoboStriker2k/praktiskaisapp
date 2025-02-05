@@ -3,6 +3,7 @@ import { computers } from '../types/types';
 import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-edit-computer',
+  standalone : true,
   template: `
     <div class="edit-computer">
       <h2>Edit Computer</h2>

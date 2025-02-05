@@ -102,7 +102,11 @@ public class ComputerService {
 
     @Transactional
     public void save(computer computer) {
+        try {
         computerRepository.save(computer);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     @Transactional
