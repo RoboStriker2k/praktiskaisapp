@@ -1,3 +1,13 @@
+.navbar {
+    font-size: 0.5rem;
+    font-weight: bold;
+}
+.navbar-header {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: white;
+}
 nav {
     background-color: #333;
     color: white;
@@ -12,12 +22,28 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }   
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
+
 .collapse {
     display: flex;
     justify-content: space-between;
     
+}
+.navbtns {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-right: 10px;
+    flex-wrap: wrap;
+    text-size-adjust: 0.5rem;
+
+}
+.navbtns button {
+    background-color: #636161;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 0.5rem;
 }

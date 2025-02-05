@@ -6,4 +6,5 @@
            20:00-21:30         visparejs angular izkartojums
 04/02/2025 11:00 - 11:30 datubazes savienojuma labojums, jo iepriekš nestrādāja.
             11:30- 14:20  endpoint labošana , jo kāda iemesla deļ nesakrita metožu nosaukumi.
-            
+05/02/2025 10:00 -12:00 Angular componentu veidošana
+

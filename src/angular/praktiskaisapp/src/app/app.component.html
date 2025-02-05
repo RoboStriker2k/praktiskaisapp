@@ -1,19 +1,21 @@
-
-<main class="main">
-  <div class="maincontainer">
-    <app-navbar/>
- 
-  <div>
-    <app-searchbar/>
+<main class="container">
+  <div class="navbar" >
+    <app-navbar (buttonstatesChange)="buttonstates"/>
   </div>
-<section class="content">
-  <div class="content">
-   <app-listings/>
+  <div class="main">
+    <div>
+      <app-searchbar />
+    </div>
+    <section class="content">
+      <div class="slot">
+       <ng-content select="[activeslot]"></ng-content>
+      </div>
 
+      <div class="content">
+        <app-listings />
+      </div>
+    </section>
   </div>
-</section>
- </div>
 </main>
-
 
 <router-outlet />

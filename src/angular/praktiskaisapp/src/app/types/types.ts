@@ -1,0 +1,1 @@
+export type records = { id: number; requestdate: string; requestedevices: string; reason: string; status: string; requestor: string; }

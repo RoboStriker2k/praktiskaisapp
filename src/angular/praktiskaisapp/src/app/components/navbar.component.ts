@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output   } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,21 +7,41 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.css'],
   template: `
     <div class="navbar">
-      
-        <div class="navbar-header">
-          <a href="#" class="navbar-brand">{{ title }}</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div>
-   
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">{{ title }}</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="navbtns">
+          <tr>
+            <button>Add Computers</button>
+          </tr>
+          <tr>
+            <button>Edit Computers</button>
+          </tr>
+          <tr>
+            <button>Delete Computers</button>
+          </tr>
+          <tr>
+            <button>Add Records</button>
+          </tr>
+          <tr>
+            <button>Edit Records</button>
+          </tr>
+          <tr>
+            <button>Delete Records</button>
+          </tr>
+        </ul>
+      </div>
     </div>
   `,
 })
 export class NavbarComponent {
   title = 'praktiskaisapp';
+  @Output() buttonstates = {
+    addbutton: false,
+    editbutton: false,
+    deletebutton: false,
+    savebutton: false,
+  };
+
 }
