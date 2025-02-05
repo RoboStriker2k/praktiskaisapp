@@ -1,3 +1,2 @@
 clear
-.\mvnw  compile
-.\mvnw  spring-boot:run
+.\mvnw  spring-boot:run -Drun.jvmArguments="-Dfile.encoding=UTF-8"

@@ -1,0 +1,2 @@
+clear
+.\mvnw  compile

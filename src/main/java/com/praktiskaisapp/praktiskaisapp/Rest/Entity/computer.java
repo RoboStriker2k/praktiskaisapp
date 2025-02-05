@@ -23,10 +23,10 @@ public class computer {
     public computer() {
     }
 
-    public computer(Long id, String cpu, Integer ramAmmount, String gpu, String motherboard, Integer storageammount, String comments, String operatingsystem) {
+    public computer(Long id, String cpu, Integer ramammount, String gpu, String motherboard, Integer storageammount, String comments, String operatingsystem) {
         this.id = id;
         this.cpu = cpu;
-        this.ramammount = ramAmmount;
+        this.ramammount = ramammount;
         this.gpu = gpu;
         this.motherboard = motherboard;
         this.storageammount = storageammount;
@@ -49,8 +49,8 @@ public class computer {
     public Integer getRamAmmount() {
         return ramammount;
     }
-    public void setRamAmmount(Integer ramAmmount) {
-        this.ramammount = ramAmmount;
+    public void setRamAmmount(Integer ramammount) {
+        this.ramammount = ramammount;
     }
     public String getGpu() {
         return gpu;

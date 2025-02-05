@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.praktiskaisapp.praktiskaisapp.Rest.Entity.computer;
 
 import com.praktiskaisapp.praktiskaisapp.Rest.Service.ComputerService;
@@ -18,8 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 
-
-@RestController 
+@RestController
 @RequestMapping("/computer")
 public class ComputerController {
     @Autowired
@@ -29,31 +29,40 @@ public class ComputerController {
     public String computerinfo() {
         return "Computer system working";
     }
+
     @DeleteMapping("/deletecomputer/{id}")
     public void deletecomputer(@PathVariable long id) {
         computerService.deleteById(id);
     }
+
     @GetMapping("/computerexistsbyid")
     public boolean existsbyid(@RequestParam long id) {
         return computerService.existsById(id);
-    }   
+    }
+
     @GetMapping("/computerexistsbycpu")
     public boolean existsbycpu(@RequestParam String Cpu) {
         return computerService.existsByCpu(Cpu);
     }
+
     @GetMapping("/computerexistsbyramammount")
     public boolean existsbyRamammount(@RequestParam Integer ramammount) {
         return computerService.existsByRamammount(ramammount);
     }
+
     @PostMapping("/newcomputer")
-    public String newcomputer(@RequestBody computer computer) {
+    public String newcomputer(@RequestBody  String computer) {
         try {
-            computerService.save(computer);
+            ObjectMapper mapper = new ObjectMapper();
+            
+            computer computera = mapper.readValue(computer, computer.class);
+            computerService.save(computera);
             return "Computer successfully added";
         } catch (Exception e) {
             return "Error: " + e.getMessage();
         }
     }
+
     @GetMapping("/getcomputer")
     public String getComputer(@RequestParam long id) {
         try {
@@ -62,6 +71,7 @@ public class ComputerController {
             return "Error: " + e.getMessage();
         }
     }
+
     @PutMapping("/updateComputer/{id}")
     public String edit(@PathVariable long id, @RequestBody computer computer) {
         try {
@@ -71,6 +81,7 @@ public class ComputerController {
             return "Error: " + e.getMessage();
         }
     }
+
     @GetMapping("/getallcomputers")
     public Iterable<computer> findAll() {
         return computerService.findAll();

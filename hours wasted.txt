@@ -1,4 +1,4 @@
-30/01/25   12:30 - 14:16 - sakotneja projekta uzstadišana iepazīšanās ar springboot un sqlite ka ari angular app izstrades vides izveide.
+    30/01/25   12:30 - 14:16 - sakotneja projekta uzstadišana iepazīšanās ar springboot un sqlite ka ari angular app izstrades vides izveide.
 02/02/2025 16:10 - 17:30 - pirmo reizi tieku pie succesfull springboot palaišanas, pēc projekta mapes izstrades checkpoint 1
            17:30-18:00  - definejumu izmaiņas
 03/02/2025 10:00- 12:40 - Statiskas angular lietotnes pasniegšana -checkpoint 4  
@@ -10,3 +10,4 @@
            12:20 - 15:10 turpinajums checkpoint 7
            15:10-17:20 trying to make component 
            17:20 -19:00 endpoint is not receiving correct datu
+           21:00 - 22:00 redoing addcomputer ---- now works
