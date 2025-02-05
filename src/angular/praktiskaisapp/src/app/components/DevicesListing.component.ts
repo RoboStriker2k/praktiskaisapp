@@ -1,18 +1,10 @@
 import { Component } from '@angular/core';
 import { computers } from '../types/types';
-
 @Component({
-  selector: 'addnewrecord',
+  selector: 'deviceslisting',
   template: `
-    <div class="addnewrecord">
-      <h2>Add New Record</h2>
-      <form group="newRecord">
-        <label for="reason">Reason:</label>
-        <input type="text" id="reason" name="reason" required />
-        <label for="status">Status:</label>
-        <input type="text" id="status" name="status" required />
-        <p>Devices to Request</p> 
-        @if (Computers.length === 0) {
+    <div class="deviceslisting">
+      @if (devices.length === 0) {
       <p>No devices found</p>
       } @else {
       <table>
@@ -25,10 +17,9 @@ import { computers } from '../types/types';
           <th>Storage</th>
           <th>Comments</th>
           <th>Operating System</th>
-          <th>Ammount</th>
         </tr>
 
-        @for ( device of Computers ; track $index) {
+        @for ( device of devices ; track $index) {
         <tr>
           <th>{{ device.id }}</th>
           <th>{{ device.cpu }}</th>
@@ -38,23 +29,18 @@ import { computers } from '../types/types';
           <th>{{ device.storageammount }}</th>
           <th>{{ device.comments }}</th>
           <th>{{ device.operatingsystem }}</th>
-          <input name="Ammount" [id]="device.id" type="number" />
         </tr>
         }
       </table>
       }
-
-        <button type="submit">Add Record</button>
-      </form>
     </div>
   `,
 })
-export class AddNewRecordComponent {
-  Computers: computers[] = [];
-  async getcomputers() {
-    const response = await fetch('/devices/getallcomputers');
+export class DevicesListingComponent {
+  devices: computers[] = [];
+  async getDevices() {
+    const response = await fetch('/computer/getallcomputers');
     const data = await response.json();
-    this.Computers = data;
+    this.devices = data;
   }
-
 }

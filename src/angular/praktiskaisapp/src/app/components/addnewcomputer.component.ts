@@ -1,21 +1,69 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
+import { computers } from '../types/types';
 
 @Component({
-    selector: 'addnewcomputer', 
-    template:`
-        <div class="addnewcomputer">
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+  selector: 'addnewcomputer',
+  template: `
+    <div class="addnewcomputer">
+      <form group="addnewcomputer">
+        <label for="cpu">CPU:</label>
+        <input type="text" id="cpu" name="cpu" required />
 
-                <label for="price">Price:</label>
-                <input type="number" id="price" name="price" required>
+        <label for="ramammount">RAM:</label>
+        <input type="number" id="ramammount" name="ramammount" required />
 
-                <button type="submit">Add Computer</button>
-            </form>
-        </div>
-    `
+        <label for="gpu">GPU:</label>
+        <input type="text" id="gpu" name="gpu" required />
+
+        <label for="motherboard">Motherboard:</label>
+        <input type="text" id="motherboard" name="motherboard" required />
+
+        <label for="storageammount">Storage:</label>
+        <input
+          type="number"
+          id="storageammount"
+          name="storageammount"
+          required
+        />
+
+        <label for="comments">Comments:</label>
+        <input type="text" id="comments" name="comments" required />
+
+        <label for="operatingsystem">Operating System:</label>
+        <input
+          type="text"
+          id="operatingsystem"
+          name="operatingsystem"
+          required
+        />
+
+        <button type="submit" (click)="submitfunction()">Submit</button>
+      </form>
+    </div>
+  `,
 })
 export class AddNewComputerComponent {
-    
+  submitfunction() {
+    let sendable = new FormData();
+    let computer = {
+      cpu: '',
+      ramammount: 0,
+      gpu: '',
+      motherboard: '',
+      storageammount: 0,
+      comments: '',
+      operatingsystem: '',
+    };
+		computer={
+			cpu: (<HTMLInputElement>document.getElementById('cpu')).value,
+			ramammount: parseInt((<HTMLInputElement>document.getElementById('ramammount')).value),
+			gpu: (<HTMLInputElement>document.getElementById('gpu')).value,
+			motherboard: (<HTMLInputElement>document.getElementById('motherboard')).value,
+			storageammount: parseInt((<HTMLInputElement>document.getElementById('storageammount')).value),
+			comments: (<HTMLInputElement>document.getElementById('comments')).value,
+			operatingsystem: (<HTMLInputElement>document.getElementById('operatingsystem')).value,
+		};
+		sendable.append('computer', JSON.stringify(computer));
+		fetch('/computer/newcomputer', { method: 'POST', body: sendable });
+  }
 }

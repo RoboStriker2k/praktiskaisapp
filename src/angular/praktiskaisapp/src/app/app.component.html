@@ -10,9 +10,8 @@
       <div class="slot">
        <ng-content select="[activeslot]"></ng-content>
       </div>
-
       <div class="content">
-        <app-listings />
+        <app-listings (editrecord)="editrecord($event)" />
       </div>
     </section>
   </div>

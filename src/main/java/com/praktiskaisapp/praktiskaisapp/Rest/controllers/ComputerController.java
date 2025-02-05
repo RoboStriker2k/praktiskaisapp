@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.praktiskaisapp.praktiskaisapp.Rest.Entity.computer;
+
 import com.praktiskaisapp.praktiskaisapp.Rest.Service.ComputerService;
 
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,5 +71,8 @@ public class ComputerController {
             return "Error: " + e.getMessage();
         }
     }
-        
+    @GetMapping("/getallcomputers")
+    public Iterable<computer> findAll() {
+        return computerService.findAll();
+    }
 }
