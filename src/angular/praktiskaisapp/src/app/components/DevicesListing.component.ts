@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { computers } from '../types/types';
 @Component({
   selector: 'deviceslisting',
   standalone : true,
   template: `
     <div class="deviceslisting">
+      <H1>Computers</H1>
       @if (devices.length === 0) {
       <p>No devices found</p>
       } @else {
@@ -24,12 +25,14 @@ import { computers } from '../types/types';
         <tr>
           <th>{{ device.id }}</th>
           <th>{{ device.cpu }}</th>
-          <th>{{ device.ramammount }}</th>
+          <th>{{ device.ramAmmount }}</th>
           <th>{{ device.gpu }}</th>
           <th>{{ device.motherboard }}</th>
           <th>{{ device.storageammount }}</th>
           <th>{{ device.comments }}</th>
           <th>{{ device.operatingsystem }}</th>
+          <th><button (click)="editComputer(device.id)">Edit</button></th>
+          <th><button (click)="deleteComputer(device.id)">Delete</button></th>
         </tr>
         }
       </table>
@@ -39,6 +42,7 @@ import { computers } from '../types/types';
 })
 export class DevicesListingComponent {
   devices: computers[] = [];
+  @Output() editrecord = new EventEmitter<number>();
   baseurl = window.location.origin;
   async getDevices() {
     const response = await fetch(`${this.baseurl}/computer/getallcomputers`);
@@ -49,5 +53,12 @@ export class DevicesListingComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.getDevices();
+  }
+  editComputer(id: number) {
+    this.editrecord.emit(id);
+  }
+  deleteComputer(id: number) {
+    fetch(`${this.baseurl}/computer/deletecomputer/${id}`, { method: 'DELETE' })
+      .then(() => this.getDevices()); 
   }
 }

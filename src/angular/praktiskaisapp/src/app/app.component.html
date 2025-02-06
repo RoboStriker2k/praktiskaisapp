@@ -9,8 +9,8 @@
     <section class="content">
       <div class="slot">
         @if (buttonstates.addbutton) {<addnewcomputer />}
-        @else if (buttonstates.editbutton) {<app-edit-computer />}
-        @else if (buttonstates.listcomputers) {<deviceslisting />}
+        @else if (buttonstates.editbutton) {<app-edit-computer [id]="editableid"/>}
+        @else if (buttonstates.listcomputers) {<deviceslisting  (editrecord)="editrecord($event)"  />}
         @else if (buttonstates.addrecords) {<addnewrecord />}
         @else {<emptycard />}
         

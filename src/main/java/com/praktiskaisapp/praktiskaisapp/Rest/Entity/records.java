@@ -24,16 +24,24 @@ public class records {
     @Column(name = "status", columnDefinition = "VARCHAR(255) DEFAULT 'Pending'")
     private String status;
     private String reason;
+    private String requestor;
 
     public records() {
     }
 
-    public records(Long id, Date requestdate, List<Number> requestedevices, String reason, String status) {
+    public records(Long id, Date requestdate, List<Number> requestedevices, String reason, String status, String requestor) {
         this.id = id;
         this.requestdate = requestdate;
         this.requestedevices = requestedevices;
         this.reason = reason;
         this.status = status;
+        this.requestor = requestor;
+    }
+    public String getRequestor() {
+        return requestor;
+    }
+    public void setRequestor(String requestor) {
+        this.requestor = requestor;
     }
 
     public Long getId() {

@@ -11,4 +11,8 @@
            15:10 - 17:20 trying to make component 
            17:20 - 19:00 endpoint is not receiving correct datu
            21:00 - 22:00 redoing addcomputer ---- now works
-06/02/2025 11:00 - x    endpoint and function implementation
+06/02/2025 11:00 - 15:30    checkpoint 10  endpoint corrrection and angular template fixinggt
+           15:30 - 17:00 checkpoint 11 viss nepieciešamais strādā , palaišanas dokumentācijas izstrāde.
+
+
+           total = 28: 46

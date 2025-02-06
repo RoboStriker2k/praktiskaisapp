@@ -24,16 +24,6 @@ import { buttonstates } from '../types/types';
             </button>
           </tr>
           <tr>
-            <button name="editbutton" (click)="changestate($event)">
-              Edit Computers
-            </button>
-          </tr>
-          <tr>
-            <button name="deletebutton" (click)="changestate($event)">
-              Delete Computers
-            </button>
-          </tr>
-          <tr>
             <button name="listcomputers" (click)="changestate($event)">
               List Computers
             </button>

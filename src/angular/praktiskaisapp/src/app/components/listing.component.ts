@@ -5,7 +5,7 @@ import { DevicesComponent } from "./Devices.component";
 @Component({
   selector: 'app-listings',
   standalone: true,
-  template: `<div>
+  template: `<div class = "listing">
     <h1>Listing</h1>
     <Table>
       <tr>
@@ -29,7 +29,14 @@ import { DevicesComponent } from "./Devices.component";
           }
       </td>
         <td>{{ record.reason }}</td>
-        <td>{{ record.status }}</td>
+        <td>
+         <select (change)="updatestatus(record.id, $event)">
+           <option value="{{ record.status }}">{{ record.status }}</option>
+           <option value="Pending">Pending</option>
+           <option value="Approved">Approved</option>
+           <option value="Denied">Denied</option>
+         </select>
+        </td>
         <td>{{ record.requestor }}</td>
         <td><button (click)="editrecord.emit(record.id)">Edit</button></td>
         <td><button (click)="delete(record.id)">Delete</button></td>
@@ -63,6 +70,11 @@ export class ListingComponent {
   delete(id: number) {
     fetch(`${this.baseurl}/records/deletebyid/${id}`, { method: 'DELETE' })
       .then(() => this.getrecords());
+  }
+  updatestatus( id: number, event: any) {
+    const status = event.target.value
+    console.log(status)
+    fetch(`${this.baseurl}/records/updatestatus/${id}/${status}`, { method: 'PUT' })
   }
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.

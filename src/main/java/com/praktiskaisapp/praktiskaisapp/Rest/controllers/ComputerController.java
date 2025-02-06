@@ -72,8 +72,8 @@ public class ComputerController {
         }
     }
 
-    @PutMapping("/updateComputer/{id}")
-    public String edit(@PathVariable long id, @RequestBody computer computer) {
+    @PutMapping("/updatecomputer/{id}")
+    public String updateComputer(@PathVariable long id, @RequestBody computer computer) {
         try {
             computerService.updateComputer(id, computer);
             return "Computer successfully edited";

@@ -41,6 +41,17 @@ public class RecordsService {
         return recordsRepository.findAll();
     }
     @Transactional
+    public String updatestatus (long id, String status) {
+        records record = recordsRepository.findById(id);
+        if (record != null) {
+            record.setStatus(status);
+            recordsRepository.save(record);
+            return "Status updated successfully";
+        } else {
+            return "Record not found";
+        }
+    }
+    @Transactional
     public String updateRecords (long id, records newRecord) {
       try {
         records existingRecord = recordsRepository.findById(id);

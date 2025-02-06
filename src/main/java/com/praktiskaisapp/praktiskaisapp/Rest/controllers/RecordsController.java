@@ -61,6 +61,9 @@ public class RecordsController {
     @PutMapping("/updaterecord/{id}")
     public String updateRecords(@PathVariable long id, @RequestBody records records) {
         return recordsService.updateRecords(id, records);
+    }   
+    @PutMapping("/updatestatus/{id}/{status}")
+    public String updatestatus(@PathVariable long id, @PathVariable String status) {
+        return recordsService.updatestatus(id, status);
     }
-
 }

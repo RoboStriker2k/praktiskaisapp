@@ -18,6 +18,8 @@ import { computers } from '../types/types';
           required
           [defaultValue]="'Pending'"
         />
+        <label for="requestor">Requestor</label>
+        <input type="requestor" id = "requestor" name="requestor" required>
         <p>Devices to Request</p>
         @if (Computers.length === 0) {
         <p>No devices found</p>
@@ -39,7 +41,7 @@ import { computers } from '../types/types';
           <tr>
             <th>{{ device.id }}</th>
             <th>{{ device.cpu }}</th>
-            <th>{{ device.ramammount }}</th>
+            <th>{{ device.ramAmmount }}</th>
             <th>{{ device.gpu }}</th>
             <th>{{ device.motherboard }}</th>
             <th>{{ device.storageammount }}</th>
@@ -85,6 +87,7 @@ export class AddNewRecordComponent {
     let request = {
       reason: (<HTMLInputElement>document.getElementById('reason')).value,
       status: (<HTMLInputElement>document.getElementById('status')).value,
+      requestor: (<HTMLInputElement>document.getElementById('requestor')).value,
       requestedevices: requestedevices,
     };
     fetch(`${this.baseurl}/records/newrecord`, {

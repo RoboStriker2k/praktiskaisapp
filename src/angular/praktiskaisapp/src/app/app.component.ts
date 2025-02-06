@@ -47,8 +47,10 @@ export class AppComponent {
     this.buttonstates = State;
   }
   activeslot = 0
-
+editableid=0
   editrecord(id: number) {
     console.log(id);
+    this.editableid=id
+    this.updatebtnstate({ ...this.buttonstates, editbutton: true });
   }
 }

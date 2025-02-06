@@ -10,7 +10,7 @@ export type records = {
 export type computers = {
   id: number ;
   cpu: string;
-  ramammount: number; 
+  ramAmmount: number; 
   gpu: string;
   motherboard: string;
   storageammount: number;

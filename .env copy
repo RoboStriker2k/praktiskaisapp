@@ -1,9 +1,8 @@
 DBdriverClassName=org.sqlite.JDBC
-dbdatasourceurl=jdbc:sqlite:file:myDb?cache=shared
-DBusername=example
-DBpassword=example
+
+DBusername=robo
+DBpassword=1234
 spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
 hibernate.hbm2ddl.auto=create-drop
-hibernate.show_sql=true
-hibernate.format_sql=true
-hibernate.use_sql_comments=true
+dbdatasourceurl=jdbc:sqlite:src/main/resources/myDB.db?cache=shared
+dbdatasourceurl1=jdbc:sqlite:file:myDb?cache=shared
