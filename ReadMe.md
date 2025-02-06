@@ -29,10 +29,16 @@ src\main\resources\static
 ```
 ### To setup Springboot app with its endpoints
 1.  run maven install command
+   
 ` .\mvnw install `
-2. then run 
+
+2. then run
+   
 ` .\mvnw  compile`
+
 3. then you can start the springboot app with
+   
 ` .\mvnw  spring-boot:run -Drun.jvmArguments="-Dfile.encoding=UTF-8" `
+
 
 ## Total time used for the project is   28 hours 46 minutes , that is over a few days
