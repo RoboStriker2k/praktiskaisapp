@@ -52,10 +52,5 @@ src\main\resources\static
 buildscript.bat; compile.bat, compileangular.bat; rerun.bat, rerunonlyangular.bat
 ```
 
-## During the development these scripts were used to save time
-```
-buildscript.bat; compile.bat, compileangular.bat; rerun.bat, rerunonlyangular.bat
-```
-
 
 ## Total time used for the project is   28 hours 46 minutes , that is over span of a week
