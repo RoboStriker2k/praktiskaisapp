@@ -48,4 +48,4 @@ src\main\resources\static
 ` .\mvnw  spring-boot:run -Drun.jvmArguments="-Dfile.encoding=UTF-8" `
 
 
-## Total time used for the project is   28 hours 46 minutes , that is over a few days
+## Total time used for the project is   28 hours 46 minutes , that is over span of a week
