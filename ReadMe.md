@@ -1,32 +1,32 @@
 ## To download the app
- `
+ ```
  git clone https://github.com/RoboStriker2k/praktiskaisapp.git
-`
+```
 ## To set up the angular development
-`
+```
 cd src/angular/praktiskaisapp
 npm install
 cd ../../..
 
-`
+```
 ## To run angular with out endpoints
-`
+```
 cd src/angular/praktiskaisapp
 ng serve
 cd ../../..
-`
+```
 
 ## To build the angular app
-`
+```
 cd src/angular/praktiskaisapp
 npm run build
 cd ../../..
 
-`
+```
 # the app builds its binaries into path : 
-`
-src\main\resources\static `
-
+```
+src\main\resources\static 
+```
 ### To setup Springboot app with its endpoints
 1.  run maven install command
 ` .\mvnw install `
