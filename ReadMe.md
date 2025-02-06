@@ -1,3 +1,10 @@
+## Requirements
+
+-java 17
+-npm 
+-Angular cli
+
+
 ## To download the app
  ```
  git clone https://github.com/RoboStriker2k/praktiskaisapp.git
