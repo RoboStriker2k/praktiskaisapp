@@ -3,10 +3,10 @@ import { computers } from '../types/types';
 
 @Component({
   selector: 'addnewcomputer',
-	standalone : true,
+  standalone: true,
   template: `
     <div class="addnewcomputer">
-      <form group="addnewcomputer" >
+      <form group="addnewcomputer">
         <label for="cpu">CPU:</label>
         <input type="text" id="cpu" name="cpu" required />
 
@@ -38,35 +38,51 @@ import { computers } from '../types/types';
           required
         />
 
-        <button preventDefault type="submit" (click)="submitfunction()">Submit</button>
+        <button preventDefault type="submit" (click)="submitfunction($event)">
+          Submit
+        </button>
       </form>
     </div>
   `,
 })
 export class AddNewComputerComponent {
-  submitfunction() {
-    let sendable = new FormData();
+  submitfunction(e: Event) {
+    e.preventDefault();
     let computer = {
       cpu: '',
-      ramammount: 0,
+      ramAmmount: 0,
       gpu: '',
       motherboard: '',
       storageammount: 0,
       comments: '',
       operatingsystem: '',
     };
-		computer={
-			cpu: (<HTMLInputElement>document.getElementById('cpu')).value,
-			ramammount: parseInt((<HTMLInputElement>document.getElementById('ramammount')).value),
-			gpu: (<HTMLInputElement>document.getElementById('gpu')).value,
-			motherboard: (<HTMLInputElement>document.getElementById('motherboard')).value,
-			storageammount: parseInt((<HTMLInputElement>document.getElementById('storageammount')).value),
-			comments: (<HTMLInputElement>document.getElementById('comments')).value,
-			operatingsystem: (<HTMLInputElement>document.getElementById('operatingsystem')).value,
-		};
-		console.log(computer);
-		
-		sendable.append('computer', JSON.stringify(computer));
-		fetch('/computer/newcomputer', { method: 'POST', body: sendable, headers: { 'Content-Type': 'application/json' } });
+    computer = {
+      cpu: (<HTMLInputElement>document.getElementById('cpu')).value,
+      ramAmmount: parseInt(
+        (<HTMLInputElement>document.getElementById('ramammount')).value
+      ),
+      gpu: (<HTMLInputElement>document.getElementById('gpu')).value,
+      motherboard: (<HTMLInputElement>document.getElementById('motherboard'))
+        .value,
+      storageammount: parseInt(
+        (<HTMLInputElement>document.getElementById('storageammount')).value
+      ),
+      comments: (<HTMLInputElement>document.getElementById('comments')).value,
+      operatingsystem: (<HTMLInputElement>(
+        document.getElementById('operatingsystem')
+      )).value,
+    };
+
+    fetch('/computer/newcomputer', {
+      method: 'POST',
+      body: JSON.stringify(computer),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        window.alert('Computer added');
+      });
   }
 }

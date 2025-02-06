@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { records } from '../types/types';
+import { computers, records } from '../types/types';
+import { DevicesComponent } from "./Devices.component";
+
 @Component({
   selector: 'app-listings',
   standalone: true,
@@ -19,7 +21,13 @@ import { records } from '../types/types';
       <tr>
         <td>{{ record.id }}</td>
         <td>{{ record.requestdate }}</td>
-        <td>{{ record.requestedevices }}</td>
+        <td>
+          @if (record.requestedevices !== null) {
+        <Devicetable [requestedevices]="record.requestedevices"></Devicetable>
+          } @else {
+            <p>No devices requested</p>
+          }
+      </td>
         <td>{{ record.reason }}</td>
         <td>{{ record.status }}</td>
         <td>{{ record.requestor }}</td>
@@ -33,25 +41,32 @@ import { records } from '../types/types';
       }
     </Table>
   </div> `,
+  imports: [DevicesComponent],
 })
 export class ListingComponent {
-  dataprops = {
-    computers: [{ name: 'Dell', price: 500 }],
-  };
 
   records: records[] = [];
+  baseurl = window.location.origin;
   async getrecords() {
-    const response = await fetch('/records/getallrecords');
+    const response = await fetch(`${this.baseurl}/records/getallrecords`);
     const data = await response.json();
-    this.records = data;
+    
+  this.records = data;
+}
+
+  async getdevicebyid(id: number) {
+    const response = await fetch(`${this.baseurl}/computer/getcomputer/${id}`);
+    const data = await response.json();
+    return data;
   }
   @Output() editrecord = new EventEmitter<number>();
-    delete(id: number) {
-        fetch(`/records/deleterecord/${id}`, { method: 'DELETE' })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-        })
-        .catch(error => console.error('Error:', error));
-    }
+  delete(id: number) {
+    fetch(`${this.baseurl}/records/deletebyid/${id}`, { method: 'DELETE' })
+      .then(() => this.getrecords());
+  }
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.getrecords();
+  }
 }

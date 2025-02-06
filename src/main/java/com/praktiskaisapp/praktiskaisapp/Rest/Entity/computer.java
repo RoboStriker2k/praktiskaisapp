@@ -1,7 +1,10 @@
 package com.praktiskaisapp.praktiskaisapp.Rest.Entity;
 
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+
 import jakarta.persistence.Table;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +22,6 @@ public class computer {
 	private Integer storageammount;
 	private String comments;
 	private String operatingsystem;
-
     public computer() {
     }
 
@@ -83,11 +85,10 @@ public class computer {
     public void setOperatingsystem(String Operatingsystem) {
         this.operatingsystem = Operatingsystem;
     }
-    public computer getComputer() {
-        return this;
-    }
-    public String computerToString()
+    @Override
+    public String toString()
     {
         return "Computer{" + this.id + "," + this.cpu + "," + this.ramammount + "," + this.gpu + "," + this.motherboard + "," + this.storageammount + "," + this.comments + "," + this.operatingsystem + "}";
     }
+   
 }

@@ -7,8 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 class PraktiskaisappApplicationTests {
 
 	@Test
-	void contextLoads() {
-	
-	}
+    void contextLoads() {
+        
+    }
+
 
 }

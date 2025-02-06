@@ -39,9 +39,15 @@ import { computers } from '../types/types';
 })
 export class DevicesListingComponent {
   devices: computers[] = [];
+  baseurl = window.location.origin;
   async getDevices() {
-    const response = await fetch('/computer/getallcomputers');
+    const response = await fetch(`${this.baseurl}/computer/getallcomputers`);
     const data = await response.json();
     this.devices = data;
+  }
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.getDevices();
   }
 }

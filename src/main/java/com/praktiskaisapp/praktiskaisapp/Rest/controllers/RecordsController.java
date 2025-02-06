@@ -2,10 +2,13 @@ package com.praktiskaisapp.praktiskaisapp.Rest.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.praktiskaisapp.praktiskaisapp.Rest.Entity.records;
 import com.praktiskaisapp.praktiskaisapp.Rest.Service.RecordsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +26,8 @@ public class RecordsController {
     public records findById(long id) {
         return recordsService.findById(id);
     }
-    @GetMapping("/deletebyid")
-    public void deleteById(long id) {
+    @DeleteMapping("/deletebyid/{id}")
+    public void deleteById(@PathVariable long id) {
         recordsService.deleteById(id);
     }
 
@@ -39,8 +42,20 @@ public class RecordsController {
     }
 
     @PostMapping("/newrecord")
-    public records save(records records) {
-        return recordsService.save(records);
+    public String save(@RequestBody String records) {
+      try {
+            ObjectMapper mapper = new ObjectMapper();
+            
+            records rec = mapper.readValue(records.toString(), records.class);
+            
+            recordsService.save(rec);
+            return "records successfully added";
+        } catch (Exception e) {
+            return "Error: " + e.getMessage();
+        }
+
+
+
     }
 
     @PutMapping("/updaterecord/{id}")

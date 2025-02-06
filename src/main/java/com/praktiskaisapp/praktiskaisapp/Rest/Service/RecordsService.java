@@ -28,8 +28,13 @@ public class RecordsService {
     }
     
     @Transactional
-    public records save(records records) {
-        return recordsRepository.save(records);
+    public void save(records records) {
+        try {
+        recordsRepository.save(records);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
     }
     @Transactional
     public Iterable<records> findAll() {

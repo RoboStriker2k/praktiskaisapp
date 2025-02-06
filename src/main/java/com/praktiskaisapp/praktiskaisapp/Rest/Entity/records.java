@@ -7,10 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-
 import java.util.List;
 
 @Entity
@@ -21,9 +18,9 @@ public class records {
     private Long id;
     @Column(name = "requestdate", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable = false, updatable = false)
     private Date requestdate;
-    @OneToMany
-    @JoinColumn(name = "computer_id")
-    private List<computer> requestedevices;
+
+    private List<Number> requestedevices;
+
     @Column(name = "status", columnDefinition = "VARCHAR(255) DEFAULT 'Pending'")
     private String status;
     private String reason;
@@ -31,7 +28,7 @@ public class records {
     public records() {
     }
 
-    public records(Long id, Date requestdate, List<computer> requestedevices, String reason, String status) {
+    public records(Long id, Date requestdate, List<Number> requestedevices, String reason, String status) {
         this.id = id;
         this.requestdate = requestdate;
         this.requestedevices = requestedevices;
@@ -55,11 +52,11 @@ public class records {
         this.requestdate = requestdate;
     }
 
-    public List<computer> getRequestedevices() {
+    public List<Number> getRequestedevices() {
         return requestedevices;
     }
 
-    public void setRequestedevices(List<computer> requestedevices) {
+    public void setRequestedevices(List<Number> requestedevices) {
         this.requestedevices = requestedevices;
     }
 
@@ -71,10 +68,7 @@ public class records {
         this.status = status;
     }
 
-    public records getRecord() {
-        return this;
-    }
-    public void setRecord (records record) {
+    public void setRecord(records record) {
         this.id = record.getId();
         this.requestdate = record.getRequestdate();
         this.requestedevices = record.getRequestedevices();
@@ -84,8 +78,8 @@ public class records {
 
     public String recordToString() {
         String devices = "";
-        for (computer device : this.requestedevices) {
-            devices += device.computerToString() + ",";
+        for (Number device : this.requestedevices) {
+            devices += device.toString() + ",";
         }
         return "Record{" + this.id + "," + this.requestdate + "," + devices + "," + this.reason + "," + this.status
                 + "}";

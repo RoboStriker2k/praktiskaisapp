@@ -63,12 +63,12 @@ public class ComputerController {
         }
     }
 
-    @GetMapping("/getcomputer")
-    public String getComputer(@RequestParam long id) {
+    @GetMapping("/getcomputer/{id}")
+    public computer getComputerbyid(@PathVariable long id) {
         try {
-            return computerService.findById(id).toString();
+            return computerService.findById(id);
         } catch (Exception e) {
-            return "Error: " + e.getMessage();
+            return null;
         }
     }
 

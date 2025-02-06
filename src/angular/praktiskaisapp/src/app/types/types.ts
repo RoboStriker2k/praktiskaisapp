@@ -1,7 +1,8 @@
 export type records = {
   id: number;
   requestdate: string;
-  requestedevices: string;
+  requestedevices:number[];
+  devices: computers[];
   reason: string;
   status: string;
   requestor: string;
@@ -9,13 +10,14 @@ export type records = {
 export type computers = {
   id: number ;
   cpu: string;
-  ramammount: number;
+  ramammount: number; 
   gpu: string;
   motherboard: string;
   storageammount: number;
   comments: string;
   operatingsystem: string;
 };
+
 export type buttonstates = {
   addbutton: boolean;
   editbutton: boolean;
