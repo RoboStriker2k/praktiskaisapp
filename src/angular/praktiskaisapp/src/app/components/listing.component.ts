@@ -8,7 +8,7 @@ import { DevicesComponent } from "./Devices.component";
   template: `<div class = "listing">
     <h1>Listing</h1>
     <Table>
-      <tr>
+      <tr style="text-decoration: solid;">
         <th>ID</th>
         <th>Request Date</th>
         <th>Requested Devices</th>
@@ -18,7 +18,7 @@ import { DevicesComponent } from "./Devices.component";
         <th>Actions</th>
       </tr>
       @if (records.length !== 0) { @for (record of records; track record) {
-      <tr>
+      <tr style="font-size: 0.5rem">
         <td>{{ record.id }}</td>
         <td>{{ record.requestdate }}</td>
         <td>

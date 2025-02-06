@@ -22,8 +22,8 @@ public class RecordsController {
     @Autowired
     private RecordsService recordsService;
 
-    @GetMapping("/Findbyid")
-    public records findById(long id) {
+    @GetMapping("/Findbyid/{id}")
+    public records findById(@PathVariable long id) {
         return recordsService.findById(id);
     }
     @DeleteMapping("/deletebyid/{id}")

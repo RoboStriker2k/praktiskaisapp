@@ -41,6 +41,7 @@ export class NavbarComponent {
     deletebutton: false,
     listcomputers: false,
     addrecords: false,
+    editrecord: false,
   };
   defaultbtnstates: buttonstates = {
     addbutton: false,
@@ -48,6 +49,7 @@ export class NavbarComponent {
     deletebutton: false,
     listcomputers: false,
     addrecords: false,
+    editrecord: false,
   };
 
   buttons = signal<buttonstates>(this.buttonstates);
@@ -61,6 +63,7 @@ export class NavbarComponent {
         'deletebutton',
         'listcomputers',
         'addrecords',
+        'editrecord',
       ].includes(buttname)
     ) {
       this.buttons.update((state) => ({

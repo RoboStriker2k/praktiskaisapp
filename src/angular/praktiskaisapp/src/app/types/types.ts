@@ -24,4 +24,5 @@ export type buttonstates = {
   deletebutton: boolean;
   listcomputers: boolean;
   addrecords: boolean;
+  editrecord: boolean
 };

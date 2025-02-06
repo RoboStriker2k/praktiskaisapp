@@ -9,6 +9,7 @@ import {
   AddNewRecordComponent,
   EmptyCardComponent,
   SearchbarComponent,
+  EditRecordComponent,
 } from '@components';
 
 import { buttonstates } from './types/types';
@@ -19,13 +20,13 @@ import { buttonstates } from './types/types';
   imports: [
     RouterOutlet,
     NavbarComponent,
-    SearchbarComponent,
     ListingComponent,
     EmptyCardComponent,
     AddNewComputerComponent,
     AddNewRecordComponent,
     EditComputerComponent,
     DevicesListingComponent,
+    EditRecordComponent,
 
   ],
   templateUrl: './app.component.html',
@@ -40,6 +41,7 @@ export class AppComponent {
     deletebutton: false,
     listcomputers: false,
     addrecords: false,
+    editrecord: false,
   };
 
 
@@ -48,9 +50,12 @@ export class AppComponent {
   }
   activeslot = 0
 editableid=0
+editcomputer(id: number) {
+  this.editableid=id
+  this.updatebtnstate({ ...this.buttonstates, editbutton: true });
+}
   editrecord(id: number) {
-    console.log(id);
     this.editableid=id
-    this.updatebtnstate({ ...this.buttonstates, editbutton: true });
+    this.updatebtnstate({ ...this.buttonstates, editrecord: true });
   }
 }

@@ -6,3 +6,4 @@ export * from './EditComputer.component';
 export * from './listing.component';
 export * from './navbar.component';
 export * from './searchbar.component';
+export * from './editrecord.component';

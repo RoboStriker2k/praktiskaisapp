@@ -3,14 +3,13 @@
     <app-navbar (BTNStates)="updatebtnstate($event)" />
   </div>
   <div class="main">
-    <div>
-      <app-searchbar />
-    </div>
+ 
     <section class="content">
       <div class="slot">
         @if (buttonstates.addbutton) {<addnewcomputer />}
         @else if (buttonstates.editbutton) {<app-edit-computer [id]="editableid"/>}
         @else if (buttonstates.listcomputers) {<deviceslisting  (editrecord)="editrecord($event)"  />}
+        @else if (buttonstates.editrecord) {<app-editrecord [id]="editableid"/>}
         @else if (buttonstates.addrecords) {<addnewrecord />}
         @else {<emptycard />}
         

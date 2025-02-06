@@ -76,23 +76,22 @@ main {
 .listing {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  font-size: small;
+  width: 100%
 }
-@media screen and (max-width: 650px) {
-  .content {
-    flex-direction: column;
-    width: max-content;
-  }
-
-  .divider {
-    height: 1px;
-    width: 100%;
-    background: var(--red-to-pink-to-purple-horizontal-gradient);
-    margin-block: 1.5rem;
-  }
+.listing table{
+  font-size: smaller; 
 }
+.listing tr  {
+  font-size: inherit;
 
+  padding-block: 0.5rem; border: 1px solid var(--gray-400);
+  padding-inline: 1rem;
+}
+.listing td {
+  font-weight: bold;
+  color: var(--gray-700);
+  font-size: inherit;
+}
 .slot{
   z-index: 1000;
 }
